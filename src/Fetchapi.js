@@ -48,7 +48,7 @@ function TableData() {
       <table border={1} cellPadding={5}>
         <thead>
           <tr>
-            <th>SR no</th>
+            <th>SR no.</th>
             <th>City</th>
             <th>ConfirmedCasesIndian</th>
             <th>ConfirmedCasesForeign</th>
