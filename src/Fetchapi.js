@@ -55,7 +55,7 @@ function Tabledata(){
               <th>confirmedCasesForeign</th>
               <th>Discharged</th>
               <th>Deaths</th>
-              <th>totalConfirmed</th>
+              <th>TotalConfirmed</th>
             </tr>
           </thead>
           {data.map((a, b) => {
