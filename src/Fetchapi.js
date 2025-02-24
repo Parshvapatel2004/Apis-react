@@ -6,7 +6,7 @@ const Fetchapi = () => {
   return (
     <div>
       {/* <ApiComp /> */}
-      <TableData/>
+      <Tabledata/>
       
     </div>
   );
@@ -33,7 +33,7 @@ function ApiComp() {
 }
 
 
-function TableData() {
+function Tabledata(){
   const [data, setData] = useState([]);
   const apiGet = () => {
     fetch("https://api.rootnet.in/covid19-in/stats/history")
@@ -41,47 +41,40 @@ function TableData() {
       .then((response) => {
         setData(response.data[0].regional);
       });
-    console.log(data);
   };
+  console.log(data);
   return (
-    <center style={{ margin: "50px" }}>
-      <table border={1} cellPadding={5}>
-        <thead>
-          <tr>
-            <th>SR no.</th>
-            <th>City</th>
-            <th>ConfirmedCasesIndian</th>
-            <th>ConfirmedCasesForeign</th>
-            <th>Discharged</th>
-            <th>Deaths</th>
-            <th>TotalConfirmed</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.length > 0 ? (
-            data.map((element, index) => {
-              return (
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>{element.loc}</td>
-                  <td>{element.confirmedCasesIndian}</td>
-                  <td>{element.confirmedCasesForeign}</td>
-                  <td>{element.discharged}</td>
-                  <td>{element.deaths}</td>
-                  <td>{element.totalConfirmed}</td>
-                </tr>
-              );
-            })
-          ) : (
+    <>
+      <center>
+        <table border={2} cellPadding={5}>
+          <thead>
             <tr>
-              <td colSpan={20} style={{ textAlign: "center" }}>
-                No Data
-              </td>
+              <th>Sr no.</th>
+              <th>State</th>
+              <th>confirmedCasesIndia</th>
+              <th>confirmedCasesForeign</th>
+              <th>Discharged</th>
+              <th>Deaths</th>
+              <th>totalConfirmed</th>
             </tr>
-          )}
-        </tbody>
-      </table>
-      <button onClick={apiGet}>Fetch </button>
-    </center>
+          </thead>
+          {data.map((a, b) => {
+            return (
+              <tr key={b}>
+                <td>{b + 1}</td>
+                <td>{a.loc}</td>
+                <td>{a.confirmedCasesIndian}</td>
+                <td>{a.confirmedCasesForeign}</td>
+                <td>{a.discharged}</td>
+                <td>{a.deaths}</td>
+                <td>{a.totalConfirmed}</td>
+              </tr>
+            );
+          })}
+        </table>
+        <button onClick={apiGet}>fetch</button>
+      </center>
+    </>
   );
 }
+
